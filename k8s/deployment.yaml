@@ -1,0 +1,48 @@
+# Placeholder workload for the second tenant (see README). Unprivileged nginx,
+# pulled through the docker-hub Artifact Registry remote per ADR-0010 — the
+# nodes are private and never pull from the internet directly.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-ledger
+  namespace: svc-ledger
+  labels:
+    app.kubernetes.io/name: svc-ledger
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: svc-ledger
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: svc-ledger
+    spec:
+      serviceAccountName: svc-ledger
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: nginx
+          image: us-central1-docker.pkg.dev/platform-factory-ref/docker-hub/nginxinc/nginx-unprivileged:1.27-alpine
+          ports:
+            - name: http
+              containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            periodSeconds: 5
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests:
+              cpu: 20m
+              memory: 32Mi
+            limits:
+              cpu: 200m
+              memory: 64Mi
