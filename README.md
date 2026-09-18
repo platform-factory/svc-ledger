@@ -15,3 +15,8 @@ namespace" is checked (a Deployment admitted under the tenant's AppProject).
 
 Part of the Platform Factory reference implementation; the design seed lives
 at https://github.com/thecloudgeek/platform-factory.
+
+Platform Factory was designed and written by **Ronak Patel**
+([thecloudgeek LLC](https://github.com/thecloudgeek)). Licensed Apache-2.0 —
+the attribution to keep is in [NOTICE](NOTICE), and
+[CITATION.cff](CITATION.cff) says how to cite it.
