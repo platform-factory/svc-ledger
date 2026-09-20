@@ -14,7 +14,7 @@ project and Application, Google service account and registry — and this
 namespace" is checked (a Deployment admitted under the tenant's AppProject).
 
 Part of the Platform Factory reference implementation; the design seed lives
-at https://github.com/thecloudgeek/platform-factory.
+at https://github.com/platform-factory/platform-factory-concept.
 
 Platform Factory was designed and written by **Ronak Patel**
 ([thecloudgeek LLC](https://github.com/thecloudgeek)). Licensed Apache-2.0 —
