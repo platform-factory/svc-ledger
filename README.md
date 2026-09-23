@@ -13,6 +13,24 @@ project and Application, Google service account and registry — and this
 `k8s/` directory is what that Application syncs, which is how "usable
 namespace" is checked (a Deployment admitted under the tenant's AppProject).
 
+## Who approves changes here
+
+[ADR-0001](https://github.com/platform-factory/platform-factory-concept/blob/main/docs/adr/0001-repo-boundary-is-approval-boundary.md)
+says the owning team approves a service repo.
+[`.github/CODEOWNERS`](.github/CODEOWNERS) names `@platform-factory/platform`
+instead, on purpose. The owning team is a Google Group, named once, by team,
+in this service's tenant file, `systems/tenants/svc-ledger.yaml`
+([ADR-0012 §3](https://github.com/platform-factory/platform-factory-concept/blob/main/docs/adr/0012-system-is-the-unit-team-is-a-field.md):
+"a second file would be a second binding point"), and CODEOWNERS can name
+only GitHub users and teams. A GitHub team per tenant team would be a second
+place ownership is recorded, and a team move would have to edit it too.
+
+Nothing is enforced either way yet. Every repo in this org requires zero
+approvals, because GitHub does not let a pull request's author approve it and
+one person authors every pull request here
+([M1 log, surprise 2](https://github.com/platform-factory/platform-factory-concept/blob/main/docs/build-log/m1-spine.md)).
+How a team's own approval gets enforced is M3's question (claim C-09).
+
 Part of the Platform Factory reference implementation; the design seed lives
 at https://github.com/platform-factory/platform-factory-concept.
 
