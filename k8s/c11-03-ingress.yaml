@@ -1,0 +1,9 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: c11-ing
+  namespace: svc-ledger
+  labels:
+    platform.thecloudgeek.io/system: svc-ledger
+spec:
+  defaultBackend: {service: {name: svc-ledger, port: {number: 80}}}
