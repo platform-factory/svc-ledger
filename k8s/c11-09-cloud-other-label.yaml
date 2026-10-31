@@ -1,9 +1,0 @@
-apiVersion: sql.cnrm.cloud.google.com/v1beta1
-kind: SQLDatabase
-metadata:
-  name: c11-db-otherlabel
-  namespace: svc-ledger
-  labels:
-    platform.thecloudgeek.io/system: svc-hello
-spec:
-  instanceRef: {external: c11-no-such-instance}
