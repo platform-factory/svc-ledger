@@ -1,0 +1,9 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: c11-route-nolabel
+  namespace: svc-ledger
+spec:
+  parentRefs: [{group: gateway.networking.k8s.io, kind: Gateway, name: external, namespace: edge}]
+  hostnames: [c11.ref.thecloudgeek.io]
+  rules: [{backendRefs: [{name: svc-ledger, port: 80}]}]

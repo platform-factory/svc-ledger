@@ -1,0 +1,10 @@
+apiVersion: networking.gke.io/v1
+kind: GCPBackendPolicy
+metadata:
+  name: c11-bp
+  namespace: svc-ledger
+  labels:
+    platform.thecloudgeek.io/system: svc-ledger
+spec:
+  default: {timeoutSec: 30}
+  targetRef: {group: "", kind: Service, name: svc-ledger}
