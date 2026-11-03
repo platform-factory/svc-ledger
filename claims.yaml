@@ -1,0 +1,24 @@
+# svc-ledger's databases, as the team asks for them (ADR-0017 §5).
+#
+# Added 2026-11-03 as C-24's fixture: a second System of the same team with
+# one database, so a team move can be watched for what it does to the other
+# System's grants (claims register, M3 readiness note). It is a second billed
+# instance; the register accepts that for the fixture. Nothing here connects
+# to it: the workload in k8s/ is a stock nginx.
+#
+# Same shape as svc-hello's claims.yaml; the platform's charts/claims turns
+# each entry into a private-IP instance with IAM login, the database `app` and
+# the IAM user for this System's Google service account.
+#   System svc-ledger + claim main
+#     -> Cloud SQL instance   svc-ledger-main
+#     -> IAM database user    svc-ledger@platform-factory-ref.iam
+#
+# It lives at the repo ROOT, beside k8s/, not inside it: it is values the
+# platform reads, not a manifest.
+databases:
+  main:
+    engine: POSTGRES_16
+    region: us-central1
+    size: S
+    tier: standard
+    backups: true
