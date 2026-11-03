@@ -5,7 +5,8 @@ it exists so that C-05 ("onboard a second tenant with one file") has a real
 service repo to point at, owned by a different team (`checkout`) than
 `svc-hello` (`payments`). The workload is a stock unprivileged nginx pulled
 through the platform's Docker Hub remote (ADR-0010); there is no application
-code and no database claim here.
+code. `claims.yaml` asks for one database, added 2026-11-03 as C-24's fixture;
+nothing here connects to it.
 
 What C-05 measures is on the platform side: one `System` file in the
 `systems` repo produces this service's namespace, quota, RBAC, Argo CD
